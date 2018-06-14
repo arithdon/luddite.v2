@@ -8,7 +8,19 @@ endif
 
 .PHONY: all vet build test clean
 
-all: vet build test
+all: deps vet build test
+
+deps:
+
+	go get "github.com/K-Phoen/negotiation"
+	go get "github.com/dimfeld/httptreemux"
+	go get "github.com/gorilla/schema"
+	go get "github.com/prometheus/client_golang/prometheus"
+	go get "github.com/rs/cors"
+	go get "github.com/sirupsen/logrus"
+	go get "gopkg.in/SpirentOrion/trace.v2"
+	go get "gopkg.in/yaml.v2"
+	go get "github.com/SpirentOrion/luddite.v2"
 
 vet:
 	cd $(BUILD_PATH) && go vet -all -composites=false -shadow=true ./...
